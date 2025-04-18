@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Portfolio</title>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    font-family: "sofia pro";
+    transition: background-color 1s, color 1s;
+    background-color: #f0f4f8;
+    color: #000;
+}
+
+header {
+    position: fixed;
+    height: 11.5vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1));
+    background-size: 15px;
+    transition: background 1s;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-container .logo {
+    color: #333;
+    font-size: xx-large;
+    font-weight: bold;
+    transition: text-shadow 1s, transform 1s;
+}
+
+.nav-container .logo span {
+    color: #007bff;
+}
+
+.nav-container .logo:hover {
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-15%);
+}
+
+.nav-items {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-items a {
+    display: inline-block;
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+    color: #333;
+    transition: transform 1s;
+}
+
+.nav-items a:hover {
+    transform: translateY(-15%);
+}
+
+.nav-items a::after {
+    content: "";
+    position: absolute;
+    height: 0.12rem;
+    border-radius: 0.12rem;
+    width: 0%;
+    background: #007bff;
+    left: 50%;
+    top: 1.2rem;
+    transform: translateX(-50%);
+    transition: width 1s;
+}
+
+.nav-items a:hover::after {
+    width: 100%;
+}
+
+.toggle-btn {
+    background: #007bff;
+    outline: none;
+    border: 1px solid #007bff;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: transform 1s;
+}
+
+.toggle-btn:hover {
+    transform: translateY(-15%);
+}
+
+.sections {
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    height: 100vh;
+    animation: appear linear;
+    animation-range: entry 0;
+    animation-timeline: view();
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        scale: .7;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.home .heading-and-intro {
+    margin-top: 11.5vh;
+    margin-left: 5vw;
+}
+
+.home .heading-and-intro .first-h2 {
+    text-align: center;
+    width: 110px;
+    background: #ffcc00;
+    border-radius: 10px;
+    font-size: 30px;
+    color: #333;
+    transition: color 1s;
+}
+
+.home .heading-and-intro .first-h1 {
+    font-size: 50px;
+    color: #007bff;
+}
+
+.home .heading-and-intro .first-h1 .first-span {
+    color: #333;
+    transition: color 1s;
+}
+
+.home .heading-and-intro .first-h1 .second-span {
+    font-family: "consolas";
+    color: #007bff;
+    transition: color 1s;
+}
+
+.home .heading-and-intro .second-h2 {
+    font-size: 40px;
+    color: #333;
+}
+
+.home .heading-and-intro .second-h2 #typewriter {
+    color: #007bff;
+}
+
+.home .heading-and-intro .second-h2 .first-span {
+    color: #333;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+.home .heading-and-intro .invisible {
+    color: transparent;
+    height: 10px;
+}
+
+.home .heading-and-intro .intro {
+    margin-right: 10vw;
+}
+
+.home .heading-and-intro .btn-container {
+    width: 32%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .heading-and-intro .btn-container .cv-btn,
+.home .heading-and-intro .btn-container .hire-me-btn {
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    height: calc(5vh - 1px);
+    width: calc(8.5vw - 1px);
+    position: relative;
+    transition: transform 1s;
+}
+
+.home .heading-and-intro .btn-container .cv-btn {
+    background: #007bff;
+    border: 1px solid #007bff;
+    overflow: hidden;
+}
+
+.home .heading-and-intro .btn-container .hire-me-btn {
+    background: #fff;
+    border: 1px solid #007bff;
+    overflow: hidden;
+}
+
+.home .heading-and-intro .btn-container .cv-btn:hover,
+.home .heading-and-intro .btn-container .hire-me-btn:hover {
+    transform: translateY(-15%);
+}
+
+.home .heading-and-intro .btn-container .cv-btn .btn-p {
+    color: #fff;
+}
+
+.home .heading-and-intro .btn-container .hire-me-btn .btn-p {
+    color: #007bff;
+}
+
+.home .heading-and-intro .btn-container .cv-btn .btn-p,
+.home .heading-and-intro .btn-container .hire-me-btn .btn-p {
+    z-index: 10;
+    position: relative;
+    transition: color .5s;
+}
+
+.home .heading-and-intro .btn-container .cv-btn:hover .btn-p {
+    color: #007bff;
+}
+
+.home .heading-and-intro .btn-container .hire-me-btn:hover .btn-p {
+    color: #fff;
+}
+
+.home .heading-and-intro .btn-container .cv-btn::before,
+.home .heading-and-intro .btn-container .hire-me-btn::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s;
+    top: 0;
+}
+
+.home .heading-and-intro .btn-container .cv-btn::before {
+    background: #fff;
+    border: none;
+    right: 0;
+}
+
+.home .heading-and-intro .btn-container .hire-me-btn::before {
+    background: #007bff;
+    border: none;
+    left: 0;
+}
+
+.home .heading-and-intro .btn-container .cv-btn:hover::before,
+.home .heading-and-intro .btn-container .hire-me-btn:hover::before {
+    width: 100%;
+}
+
+.home .heading-and-intro .icons-container ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.home .heading-and-intro .icons-container ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1vw;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 50%;
+    background: #333;
+    color: #208cff;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 1s;
+}
+
+.home .heading-and-intro .icons-container ul li a:hover {
+    transform: translateY(-15%);
+}
+
+.home .heading-and-intro .icons-container ul li a svg {
+    height: 1rem;
+    width: 1rem;
+}
+
+.home .img-container-1 img {
+    height: 50vh;
+    width: 25vw;
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    margin-top: 11.5vh;
+    margin-right: 10vw;
+    border: 10px solid #007bff;
+    object-fit: cover;
+    transition: border 1s, box-shadow 1s, border-radius 1s;
+}
+
+.home .img-container-1 img:hover {
+    border: .00001px solid #007bff;
+    box-shadow: 0 0 25px 5px #007bff;
+    border-radius: 30% 70% 70% 30% / 30% 57% 43% 70%;
+}
+
+.heading {
+    font-size: 30px;
+    color: #007bff;
+    display: inline-block;
+    position: relative;
+}
+
+.heading::after {
+    content: "";
+    position: absolute;
+    height: 3.5px;
+    width: 50%;
+    top: 2.6rem;
+    left: 50%;
+    transform: translate(-50%);
+    background: #007bff;
+    border-radius: 3.5px;
+    transition: width 1s;
+}
+
+.heading:hover::after {
+    width: 100%;
+}
+
+.about {
+    background: #fff;
+}
+
+.about .container {
+    text-align: center;
+    margin-top: 5vh;
+    margin-left: 5vw;
+}
+
+.about .container .content {
+    display: flex;
+}
+
+.about .container .content .img-container-2 img {
+    height: 45vh;
+    width: 16.5vw;
+    margin-right: 5vw;
+    border-radius: 25px;
+    border: 5px solid #007bff;
+    object-fit: cover;
+    transition: border 1s, box-shadow 1s;
+}
+
+.about .container .content .img-container-2 img:hover {
+    border: .00001px solid #007bff;
+    box-shadow: 0 0 12.5px 2.5px #007bff;
+}
+
+.about .container .content .about-me {
+    margin-top: 20vh;
+    margin-right: 5vw;
+}
+
+.skills .container {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.skills .container .content .skill {
+    text-align: left;
+    border-radius: 10px;
+    width: 60vw;
+    background: #fff;
+    margin-bottom: 5vh;
+    padding: 10px;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 1s;
+}
+
+.skills .container .content .skill:hover {
+    transform: translateY(-15%);
+}
+
+.skills .container .content .skill h4 {
+    color: #ffcc00;
+    margin-bottom: 5px;
+}
+
+.skills .container .content .skill h4 span {
+    color: #333;
+    margin-left: 7px;
+}
+
+.skills .container .content .skill .progress {
+    background: #f0f4f8;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 15px;
+    width: 0%;
+    text-align: center;
+    transition: width 1s;
+}
+
+.skills .container .content .skill:hover .progress {
+    width: 100%;
+}
+
+.skills .container .content .skill .progress .progress-bar {
+    background-color: #ffcc00;
+    height: 100%;
+    border-top-right-radius: 10px;
+    font-size: small;
+    transition: width 2s;
+}
+
+.skills .container .content .skill:hover .progress .progress-bar {
+    width: 100%;
+}
+
+.projects {
+    background: #fff;
+}
+
+.projects .container {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.projects .container .content .cards {
+    display: flex;
+}
+
+.projects .container .content .cards .all {
+    color: #333;
+    height: 50vh;
+    width: 17.5vw;
+    padding: 20px;
+    padding-top: 30px;
+    margin-left: 1.25vw;
+    margin-right: 1.25vw;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 1s;
+}
+
+.projects .container .content .cards .all:hover {
+    transform: translateY(-5%);
+}
+
+.projects .container .content .cards .all h3 {
+    color: #ffcc00;
+    margin-top: calc(20vh - 10px);
+    transform: rotate(-45deg);
+    transition: transform 1s, margin-top 1s;
+}
+
+.projects .container .content .cards .all:hover h3 {
+    margin-top: 0;
+    transform: rotate(0deg);
+}
+
+.projects .container .content .cards .all p {
+    position: relative;
+    color: transparent;
+    transition: color 1s;
+}
+
+.projects .container .content .cards .all:hover p {
+    font-family: 'roboto';
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+.projects .container .content .cards .card-1,
+.projects .container .content .cards .card-2,
+.projects .container .content .cards .card-3,
+.projects .container .content .cards .card-4 {
+    position: relative;
+}
+
+.projects .container .content .cards .card-1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    filter: brightness(.3) grayscale(1) opacity(.5);
+    background: url(Form.png);
+    background-position: center;
+    transition: background 1s;
+}
+
+.projects .container .content .cards .card-2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    filter: brightness(.4) grayscale(1) opacity(.5);
+    background: url(Glowing\ Button.png);
+    background-position: center;
+    transition: background 1s;
+}
+
+.projects .container .content .cards .card-3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    filter: brightness(.4) grayscale(1) opacity(.5);
+    background: url(Portfolio.png);
+    background-position: center;
+    transition: background 1s;
+}
+
+.projects .container .content .cards .card-4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    filter: brightness(.3) grayscale(1) opacity(.6);
+    background: url(VS\ Code.png);
+    background-position: center;
+    transition: background 1s;
+}
+
+.projects .container .content .cards .card-1:hover::before,
+.projects .container .content .cards .card-2:hover::before,
+.projects .container .content .cards .card-3:hover::before,
+.projects .container .content .cards .card-4:hover::before {
+    background: linear-gradient(#f0f4f8, transparent);
+    filter: none;
+}
+
+.contact .container {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.contact .container .content .form input,
+.contact .container .content .form textarea {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 1s;
+}
+
+.contact .container .content .form input {
+    height: 7vh;
+    width: 30vw;
+}
+
+.contact .container .content .form textarea {
+    margin-top: 5vh;
+    font-family: 'sofia pro';
+    height: 30vh;
+    width: 60vw;
+}
+
+.contact .container .content .form input:focus,
+.contact .container .content .form textarea:focus {
+    transform: translateY(-15%);
+}
+
+.contact .container .content .form input:focus::placeholder,
+.contact .container .content .form textarea:focus::placeholder {
+    visibility: hidden;
+}
+
+.contact .container .content .form button {
+    margin-top: 5vh;
+    border: none;
+    outline: none;
+    height: 7vh;
+    width: 15vw;
+    border-radius: 10px;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: transform 1s;
+}
+
+.contact .container .content .form button:hover {
+    transform: translateY(-15%);
+}
+
+.contact .container .content .form button .btn-p {
+    color: #fff;
+    z-index: 10;
+    position: relative;
+    transition: color 1s;
+}
+
+.contact .container .content .form button:hover .btn-p {
+    color: #007bff;
+}
+
+.contact .container .content .form button::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #007bff;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 10px;
+    transition: width 1s;
+}
+
+.contact .container .content .form button:hover::before {
+    width: 100%;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #1f242d;
+    color: #fff;
+}
+
+body.dark header {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 15px;
+    border-radius: 10px;
+}
+
+body.dark .nav-container .logo {
+    color: #fff;
+    font-size: xx-large;
+    font-weight: bold;
+    transition: text-shadow 1s, transform 1s;
+}
+
+body.dark .nav-container .logo span {
+    color: #007bff;
+}
+
+body.dark .nav-container .logo:hover {
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+    transform: translateY(-15%);
+}
+
+body.dark .nav-items a {
+    color: #fff;
+    font-weight: 300;
+}
+
+body.dark .toggle-btn {
+    background: #007bff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.5rem;
+    transition: transform 1s;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .toggle-btn:hover {
+    transform: translateY(-15%);
+}
+
+body.dark .home .heading-and-intro .first-h2 {
+    background: #ffcc00;
+    color: #1f242d;
+}
+
+body.dark .home .heading-and-intro .first-h1 .first-span,
+body.dark .home .heading-and-intro .second-h2,
+body.dark .home .heading-and-intro .second-h2 .first-span {
+    color: #fff;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn,
+body.dark .home .heading-and-intro .btn-container .hire-me-btn {
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.5);
+    height: calc(5vh - 1px);
+    width: calc(8.5vw - 1px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 1s;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn {
+    background: #007bff;
+    border: 1px solid #007bff;
+}
+
+body.dark .home .heading-and-intro .btn-container .hire-me-btn {
+    background: #181c24;
+    border: 1px solid #208cff;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn:hover,
+body.dark .home .heading-and-intro .btn-container .hire-me-btn:hover {
+    transform: translateY(-15%);
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn .btn-p {
+    color: #fff;
+}
+
+body.dark .home .heading-and-intro .btn-container .hire-me-btn .btn-p {
+    color: #208cff;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn .btn-p,
+body.dark .home .heading-and-intro .btn-container .hire-me-btn .btn-p {
+    z-index: 10;
+    position: relative;
+    transition: color .5s;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn:hover .btn-p {
+    color: #208cff;
+}
+
+body.dark .home .heading-and-intro .btn-container .hire-me-btn:hover .btn-p {
+    color: #fff;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn::before,
+body.dark .home .heading-and-intro .btn-container .hire-me-btn::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s;
+    top: 0;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn::before {
+    background: #181c24;
+    border: none;
+    right: 0;
+}
+
+body.dark .home .heading-and-intro .btn-container .hire-me-btn::before {
+    background: #007bff;
+    border: none;
+    color: #fff;
+    left: 0;
+}
+
+body.dark .home .heading-and-intro .btn-container .cv-btn:hover::before,
+body.dark .home .heading-and-intro .btn-container .hire-me-btn:hover::before {
+    width: 100%;
+}
+
+body.dark .home .heading-and-intro .icons-container ul li a {
+    background: #fff;
+    color: #007bff;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .about {
+    background: #181c24;
+}
+
+body.dark .skills .container .content .skill {
+    background: #181c24;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .skills .container .content .skill h4 span {
+    color: #fff;
+}
+
+body.dark .skills .container .content .skill .progress {
+    background: #1f242d;
+}
+
+body.dark .skills .container .content .skill .progress .progress-bar {
+    color: #1f242d;
+}
+
+body.dark .projects {
+    background: #181c24;
+}
+
+body.dark .projects .container .content .cards .all {
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .projects .container .content .cards .all:hover p {
+    color: #bbb;
+}
+
+body.dark .projects .container .content .cards .card-1:hover::before,
+body.dark .projects .container .content .cards .card-2:hover::before,
+body.dark .projects .container .content .cards .card-3:hover::before,
+body.dark .projects .container .content .cards .card-4:hover::before {
+    background: linear-gradient(#1f242d, transparent);
+    filter: none;
+}
+
+body.dark .contact .container .content .form input,
+body.dark .contact .container .content .form textarea {
+    border: none;
+    outline: none;
+    background: #181c24;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.5);
+    transition: transform 1s;
+}
+
+body.dark .contact .container .content .form input {
+    height: 7vh;
+    width: 30vw;
+}
+
+body.dark .contact .container .content .form textarea {
+    margin-top: 5vh;
+    font-family: 'sofia pro';
+    height: 30vh;
+    width: 60vw;
+}
+
+body.dark .contact .container .content .form input:focus,
+body.dark .contact .container .content .form textarea:focus {
+    transform: translateY(-15%);
+}
+
+body.dark .contact .container .content .form input:focus::placeholder,
+body.dark .contact .container .content .form textarea:focus::placeholder {
+    visibility: hidden;
+}
+
+body.dark .contact .container .content .form button {
+    margin-top: 5vh;
+    border: 1px solid #007bff;
+    outline: none;
+    height: 7vh;
+    width: 15vw;
+    border-radius: 10px;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    box-shadow: 0 10px 10px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: transform 1s;
+}
+
+body.dark .contact .container .content .form button:hover {
+    transform: translateY(-15%);
+}
+
+body.dark .contact .container .content .form button .btn-p {
+    color: #fff;
+    z-index: 10;
+    position: relative;
+    transition: color 1s;
+}
+
+body.dark .contact .container .content .form button:hover .btn-p {
+    color: #208cff;
+}
+
+body.dark .contact .container .content .form button::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background: #181c24;
+    border: 1px solid #007bff;
+    color: #fff;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 10px;
+    transition: width 1s;
+}
+
+body.dark .contact .container .content .form button:hover::before {
+    width: 100%;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="nav-container">
+        <h1 class="logo">Port<span>folio.</span></h1>
+        <div class="nav-items">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="btn-container">
+          <button id="toggle-theme" class="toggle-btn">Dark Mode</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="sections home">
+      <div class="heading-and-intro">
+        <h2 class="first-h2">Hi! I'm,</h2>
+        <h1 class="first-h1">
+          Virat<span class="first-span"> Raj</span><span class="second-span">__</span>
+        </h1>
+        <h2 class="second-h2">A <span id="typewriter"></span><span class="first-span">|</span></h2>
+        <p class="invisible">br</p>
+        <p class="intro">
+          I'm a passionate web developer with a keen eye for creating beautiful and functional websites. My goal is to
+          combine clean code with creative design to build meaningful web solutions.
+        </p>
+        <br />
+        <div class="btn-container">
+          <button class="cv-btn">
+            <p class="btn-p">Download CV</p>
+          </button>
+          <button class="hire-me-btn" onclick="location.href = '#contact'">
+            <p class="btn-p">Hire Me</p>
+          </button>
+        </div>
+        <div class="icons-container">
+          <br />
+          <ul>
+            <li>
+              <a href="https://github.com/ViratRajVSC">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+                  class="bi bi-github" viewBox="0 0 16 16">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="http://www.facebook.com">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-facebook" viewBox="0 0 16 16">
+                  <path
+                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="http://www.whatsapp.com">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-whatsapp" viewBox="0 0 16 16">
+                  <path
+                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="img-container-1">
+        <img src="../Images/BB6.png" alt="img-1">
+      </div>
+    </section>
+    <section id="about" class="sections about">
+      <div class="container">
+        <h1 class="heading">About Me</h1>
+        <div class="content">
+          <div class="img-container-2">
+            <img src="../Images/BB6.png" alt="img-2">
+          </div>
+          <div class="heading-and-intro">
+            <p class="about-me">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, ex, nihil corrupti nulla
+              pariatur accusantium sed libero rerum vero dolor quod? Delectus, repudiandae? Architecto itaque reiciendis
+              quas ea nostrum iusto! Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic iure, vero eum
+              dignissimos nemo delectus totam optio magnam, deleniti tenetur magni autem, tempore odit? Vel laboriosam
+              praesentium ducimus cum culpa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="sections skills">
+      <div class="container">
+        <h1 class="heading">My Skills</h1>
+        <div class="content">
+          <br><br>
+          <div class="skill">
+            <h4>HTML: <span>Most Used Markup Language</span></h4>
+            <div class="progress">
+              <div class="progress-bar" style="width: 85%;">85%</div>
+            </div>
+          </div>
+          <div class="skill">
+            <h4>CSS: <span>Most Used Styling Language</span></h4>
+            <div class="progress">
+              <div class="progress-bar" style="width: 80%;">80%</div>
+            </div>
+          </div>
+          <div class="skill">
+            <h4>JavaScript: <span>Most Used Functionality Language</span></h4>
+            <div class="progress">
+              <div class="progress-bar" style="width: 10%;">10%</div>
+            </div>
+          </div>
+          <div class="skill">
+            <h4>Python: <span>Most Used Automation Language</span></h4>
+            <div class="progress">
+              <div class="progress-bar" style="width: 5%;">5%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="sections projects">
+      <div class="container">
+        <h1 class="heading">My Recent Projects</h1>
+        <div class="content">
+          <br><br>
+          <div class="cards">
+            <div class="all card-1" onclick="card1()">
+              <h3>Modern Form</h3>
+              <br>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatem dolor officia non cupiditate
+                quia, fugit odio? Quibusdam, molestiae quia? Laudantium ducimus sit quod error dolorem. Modi illum odit
+                aspernatur?</p>
+            </div>
+            <div class="cards">
+              <div class="all card-2" onclick="card2()">
+                <h3>Glowing Button</h3>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatem dolor officia non cupiditate
+                  quia, fugit odio? Quibusdam, molestiae quia? Laudantium ducimus sit quod error dolorem. Modi illum
+                  odit
+                  aspernatur?</p>
+              </div>
+              <div class="cards">
+                <div class="all card-3" onclick="card3()">
+                  <h3>Portfolio</h3>
+                  <br>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatem dolor officia non
+                    cupiditate
+                    quia, fugit odio? Quibusdam, molestiae quia? Laudantium ducimus sit quod error dolorem. Modi illum
+                    odit
+                    aspernatur?</p>
+                </div>
+                <div class="cards">
+                  <div class="all card-4" onclick="card4()">
+                    <h3>Creative Blog</h3>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptatem dolor officia non
+                      cupiditate
+                      quia, fugit odio? Quibusdam, molestiae quia? Laudantium ducimus sit quod error dolorem. Modi illum
+                      odit
+                      aspernatur?</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </section>
+    <section id="contact" class="sections contact">
+      <div class="container">
+        <h1 class="heading">Contact Me</h1>
+        <div class="content">
+          <br></br>
+          <form class="form">
+            <input id="subject" type="text" placeholder="Name">
+            <input id="body1" type="email" placeholder="E-mail">
+            <br>
+            <textarea id="body2" placeholder="Message"></textarea>
+            <br>
+            <button id="sendEmail">
+              <p class="btn-p">Send E-mail</p>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Toggle theme between light and dark
+const toggleBtn = document.getElementById("toggle-theme");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  toggleBtn.textContent = document.body.classList.contains("dark")
+    ? "Light Mode"
+    : "Dark Mode";
+});
+
+// Typewriter effect
+const words = ["Front-End Developer", "Student", "Cheerful Person"];
+let wordIndex = 0;
+let charIndex = 0;
+const typewriterElement = document.getElementById("typewriter");
+
+function type() {
+  if (charIndex < words[wordIndex].length) {
+    typewriterElement.textContent += words[wordIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, Math.random() * (150 - 50) + 50); // Random typing speed between 100ms and 200ms
+  } else {
+    setTimeout(erase, 2000); // Delay before starting to erase
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    typewriterElement.textContent = words[wordIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, Math.random() * (100 - 25) + 25); // Random erasing speed between 50ms and 100ms
+  } else {
+    wordIndex = (wordIndex + 1) % words.length;
+    setTimeout(type, 500); // Delay before starting to type the next word
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (typewriterElement) {
+    setTimeout(type, 1000); // Initial delay before starting to type
+  }
+});
+
+function card1() {
+  window.open("C:/Users/VIRAT RAJ/OneDrive/Pictures/Images/Sign In.png")
+};
+
+function card2() {
+  window.open("C:/Users/VIRAT RAJ/OneDrive/Pictures/Images/Glowing Button.png")
+};
+
+function card3() {
+  window.open("C:/Users/VIRAT RAJ/OneDrive/Pictures/Images/Portfolio.png")
+};
+
+function card4() {
+  window.open("C:/Users/VIRAT RAJ/OneDrive/Pictures/Images/VS Code.png")
+};
+
+document.getElementById('sendEmail').addEventListener('click', function () {
+  const subject = document.getElementById('subject').value;
+  const body1 = document.getElementById('body1').value;
+  const body2 = document.getElementById('body2').value;
+
+  const mailtoLink = `mailto:viratraj50@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body1 + "\n\n" + body2)}`;
+
+  window.location.href = mailtoLink;
+});
+  </script>
+</body>
+
+</html>
